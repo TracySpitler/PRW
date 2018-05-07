@@ -1,0 +1,85 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Lick the Spoon!</title>
+  <meta name="description" content="A place to save your favorite meals.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!--<link rel="stylesheet" href="css/reset.css">-->
+  <link rel="stylesheet" href="css/main.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
+
+  <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+
+  <!--Header-->
+  <header class="header">
+    <div class="hero-text">
+      <h1>Lick the Spoon!</h1>
+      <p>Save your recipes. Your taste buds will thank you.</p>
+    </div>
+  </header>
+
+  <!--Recipe Form-->
+  <div class="recipe-entry">
+    <div class="form">
+      <form class="recipe-form" name="myForm" onsubmit="return(validate());">
+        <input id="name" name="name" type="text" placeholder="recipe name*"/>
+        <input id="description" name="description" type="text" placeholder="description*"/>
+        <input id="category" name="category" type="text" placeholder="category*"/>
+        <div class="stars">
+          <p>Rating:
+          <span>
+            <input class="fas fa-star" type="radio" name="rating" value="1"/>
+            <input class="fas fa-star" type="radio" name="rating" value="2"/>
+            <input class="fas fa-star" type="radio" name="rating" value="3"/>
+            <input class="fas fa-star" type="radio" name="rating" value="4"/>
+            <input class="fas fa-star" type="radio" name="rating" value="5"/>
+          </span>
+          </p>
+        </div>
+        <button id="add" onclick="addRecipe();">Add Recipe</button>
+      </form>
+    </div>
+  </div>
+
+  <!--Navigation Bar-->
+  <nav class="nav">
+    <ul class="links">
+      <li><a class="active" href="index.html">Dashboard</a></li>
+      <li><a href="">Appetizers</a></li>
+      <li><a href="">Main Course</a></li>
+      <li><a href="">Salads</a></li>
+      <li><a href="">Soups</a></li>
+      <li><a href="">Desserts</a></li>
+    </ul>
+  </nav>
+
+  <!--Recipe Collection-->
+  <div class="" id="recipeCards"></div>
+
+  <!--Footer-->
+  <footer class="social-nav">
+    <h5>Created by Tracy Spitler</h5>
+    <a href="index.html"><i class="fab fa-github"></i></a>
+    <a href="#"><i class="fab fa-linkedin"></i></a>
+    <a href="#"><i class="fab fa-codepen"></i></a>
+  </footer>
+  <button type="button" name="trash"></button>
+
+
+
+<!-- JavaScript
+================================================== -->
+<script src="src/main.js"></script>
+
+</body>
+</html>
