@@ -12,11 +12,10 @@ fetch("https://api.myjson.com/bins/gg3eh")
   .then(data => {
     //JS
     let myList = $('#recipeCards');
-        imgNum = Math.floor(Math.random()*5);
-        img = '<img class="food-img" src="assets/' + imgNum + '.jpg" alt="Recipe Image">';
 
         $.each(data.recipes, function() {
-          $("#recipeCards").append("<article>" + img +
+          imgNum = Math.floor(Math.random()*16);
+          $("#recipeCards").append("<article>" + "<img class='food-img' src='assets/" + imgNum + ".jpg' alt='Recipe Image'>" +
           "<div class='food-text'><h4>"
           + this.title +
           "</h4><p class='description'>"
@@ -26,7 +25,7 @@ fetch("https://api.myjson.com/bins/gg3eh")
           "<br><strong>Star Rating: </strong>"
           + this.starRating +
           "</p><p class='remove'>" +
-          "<button class='fas fa-trash' type='button' name='trash'>" +
+          "<button class='fas fa-trash' type='button' name='trash' onclick='deleteThis(this);'>" +
           "</button>" +
           "</p></div></article>"
           )
@@ -35,6 +34,13 @@ fetch("https://api.myjson.com/bins/gg3eh")
         console.log('data is ', data)
   })
   .catch(error => console.log('error is ', error))
+
+  /* Rating Stars
+  ================================================== */
+
+  function checked() {
+    $('input[name=radioName]:checked').val();
+  }
 
   /* Validate
   ================================================== */
@@ -69,17 +75,19 @@ fetch("https://api.myjson.com/bins/gg3eh")
   ================================================== */
 
   function myList() {
-    $("#recipeCards").append("<article>" + img +
-      "<div class='food-text'><h4>"
+
+    imgNum = Math.floor(Math.random()*16);
+    $("#recipeCards").append("<article>" + "<img class='food-img' src='assets/" + imgNum + ".jpg' alt='Recipe Image'>" +
+    "<div class='food-text'><h4>"
       + $("#name").val() +
       "</h4><p class='description'>"
       + $("#description").val() +
       "</p><p><strong>Category: </strong>"
       + $("#category").val() +
       "<br><strong>Star Rating: </strong>"
-      + $(".fa-star").val() +
+      + $("input[type=radio]:checked").val() +
       "</p><p class='remove'>" +
-      "<button class='fas fa-trash' type='button' name='trash'>" +
+      "<button class='fas fa-trash' type='button' name='trash' onclick='deleteThis(this);'>" +
       "</button>" +
       "</p></div></article>"
       );
@@ -111,19 +119,46 @@ fetch("https://api.myjson.com/bins/gg3eh")
   /* Local Storage
   ================================================== */
 
-  function saveMe(){
+  function saveMe() {
     // Store
-    var recipe = { 'name': $("#name").val(), 'description': $("#description").val(), 'category': $("#category").val() };
+
+    var num = Math.floor(Math.random()*16);;
+    var recipe = { 'name': $("#name").val(), 'description': $("#description").val(), 'category': $("#category").val(), 'rating': $('input[type=radio]:checked').val() };
     localStorage.setItem('recipe', JSON.stringify(recipe));
   }
 
-  function loadMe(){
+  function loadMe() {
     // Retrieve
     var retrieved = localStorage.getItem('recipe');
-    var obj = JSON.parse(retrieved);
-    alert(data);
+    var data = JSON.parse(retrieved);
+    let imgNum = Math.floor(Math.random()*16);
+        img = '<img class="food-img" src="assets/' + imgNum + '.jpg" alt="Recipe Image">';
 
-
+    if (localStorage != 'undefined') {
+      $("#recipeCards").append("<article>" + img +
+        "<div class='food-text'><h4>"
+        + data.name +
+        "</h4><p class='description'>"
+        + data.description +
+        "</p><p><strong>Category: </strong>"
+        + data.category +
+        "<br><strong>Rating: </strong>"
+        + data.rating +
+        "</p><p class='remove'>" +
+        "<button class='fas fa-trash' type='button' name='trash' onclick='deleteThis(this);'>" +
+        "</button>" +
+        "</p></div></article>"
+        );
+    }
   }
 
-  window.addEventListener('load', loadMe, false);
+  /* Remove Item
+  ================================================== */
+  function deleteThis(deleteMe) {
+    $(deleteMe).parents("article").remove();
+  }
+
+
+  $(document).ready(function () {
+    loadMe();
+  });

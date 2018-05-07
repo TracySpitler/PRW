@@ -42,8 +42,7 @@
   }
 
   & .stars {
-    color: $black;
-    opacity: .3;
+    color: $light;
     margin: 0 0 15px;
     padding: 10px;
   }
@@ -54,17 +53,20 @@
   opacity: 1;
 }
 
+.fa-trash {
+  color: $light;
+}
+
 .fa-trash:hover {
-  color: red;
+  color: $red;
   opacity: 1;
   text-decoration: none;
 }
 
 .fa-star:hover {
-  opacity: 1;
-  color: yellow;
+  color: $yellow;
 }
 
 checked {
-  
+
 }

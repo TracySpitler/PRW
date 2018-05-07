@@ -12,11 +12,12 @@
     background-color: white;
     width: 360px;
     height: auto;
-    margin: 3rem 0;
+    margin: 3rem 1.5rem;
   }
 
   & .food-img {
     width: 100%;
+    height: 45%;
   }
 
   & .food-text {
@@ -40,4 +41,9 @@
       height: 50px;
     }
   }
+}
+
+.checked {
+  color: $yellow;
+  opacity: 1;
 }
