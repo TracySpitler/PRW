@@ -1,0 +1,46 @@
+/* Navigation
+================================================== */
+
+.App-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  & a {
+    color: white;
+    font-size: 2rem;
+    padding: 0 1.5rem;
+  }
+
+  & a:hover {
+    color: $green;
+  }
+}
+
+.Nav-side {
+  display: flex;
+  flex-direction: column;
+  background-color: $light-grey;
+  width: 20vw;
+
+  & h3 {
+    text-align: left;
+    color: $dark-green;
+    font-weight: bold;
+  }
+
+  & .Side-icon {
+    text-align: left;
+    color: $dark-grey;
+    font-size: 1rem;
+  }
+
+  & .Side-icon:hover {
+    color: $green;
+    font-weight: bold;
+  }
+
+  & .i-sidebar {
+    padding: 1.5rem;
+  }
+}

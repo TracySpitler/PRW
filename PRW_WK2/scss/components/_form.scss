@@ -1,0 +1,29 @@
+/* Form
+================================================== */
+
+.expense-form {
+  width: 100%;
+
+  & .i-add {
+    margin-top: .5rem;
+    color: $dark-grey;
+    font-size: 2rem;
+    padding: 0 1.5rem;
+  }
+
+  & .i-add:hover {
+    color: $dark-green;
+  }
+}
+
+.input-field {
+  width: 20rem;
+  padding: 1rem;
+  margin: .5rem;
+  border: .5px solid $dark-grey;
+  text-align: center;
+}
+
+.input-field:focus {
+  border: 2px solid $green;
+}

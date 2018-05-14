@@ -1,0 +1,16 @@
+/* Header & Footer
+================================================== */
+
+.i-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 7rem;
+  width: 7rem;
+  color: $green;
+  margin: 0 2rem;
+}
+
+.App-header, .App-footer {
+  background-color: #222;
+  padding: 1.5rem;
+  color: white;
+}
