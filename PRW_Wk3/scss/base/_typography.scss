@@ -1,0 +1,23 @@
+/* Typography
+================================================== */
+
+html {
+  font-family: $font-stack-ptsans;
+  font-size: $font-size;
+	overflow-x: hidden;
+  font-size: 1rem;
+
+  & h1 {
+    font-size: 3rem;
+  }
+
+  & h2 {
+    font-size: 1rem;
+  }
+
+  & h3 {
+    font-weight: bold;
+    font-size: 1.5rem;
+    padding: 1.5rem;
+  }
+}

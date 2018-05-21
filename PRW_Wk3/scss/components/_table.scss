@@ -1,0 +1,44 @@
+/* Table
+================================================== */
+
+.table {
+  margin-bottom: 1.5rem;
+  justify-content: center;
+
+  & table {
+    width: 70vw;
+    margin: 0 auto;
+
+    & td, th {
+      padding: 1.5rem 3.5rem;
+    }
+
+    & th {
+      background-color: $dark-green;
+      color: white;
+      font-weight: bold;
+    }
+
+    & tr {
+      background-color: rgba(244, 244, 244, .2);
+
+      &:nth-child(even) {
+        background-color: $light-grey;
+      }
+    }
+
+    & tr:hover {
+      background-color: rgba(162, 209, 105, .5);
+    }
+  }
+
+  & .i-remove {
+    color: $dark-grey;
+    font-size: 1.5rem;
+
+    &:hover {
+      color: $red;
+      font-weight: bold;
+    }
+  }
+}

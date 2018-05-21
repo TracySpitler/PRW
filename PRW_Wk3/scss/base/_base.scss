@@ -1,0 +1,26 @@
+/* Base
+================================================== */
+
+.App {
+  text-align: center;
+}
+
+.Main-div {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem auto;
+  width: 75vw;
+  justify-content: center;
+}
+
+.container {
+  display: flex;
+}
+
+button:focus {
+  outline: none;
+}
+
+.piechart {
+  margin: auto;
+}

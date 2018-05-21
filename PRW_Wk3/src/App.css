@@ -1,0 +1,198 @@
+/* Main SCSS
+================================================== */
+/* Variables
+================================================== */
+/* Keyframes
+================================================== */
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg); }
+  to {
+    transform: rotate(360deg); } }
+
+/* CSS RESET
+==================================================
+================================================== */
+html, body, div, main, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, button, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend, input, textarea,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video,
+::before, ::after {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  text-decoration: none;
+  box-sizing: border-box; }
+
+/* HTML5 - Older browser support
+================================================== */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+/* BODY
+================================================== */
+body {
+  line-height: 1; }
+
+/* LISTS - Clear bullets
+================================================== */
+ol, ul {
+  list-style: none; }
+
+/* QUOTES
+================================================== */
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+/* TABLES
+================================================== */
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+/* Base
+================================================== */
+.App {
+  text-align: center; }
+
+.Main-div {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem auto;
+  width: 75vw;
+  justify-content: center; }
+
+.container {
+  display: flex; }
+
+button:focus {
+  outline: none; }
+
+/* Typography
+================================================== */
+html {
+  font-family: "PT Sans", sans-serif;
+  font-size: 62.5%;
+  overflow-x: hidden;
+  font-size: 1rem; }
+  html h1 {
+    font-size: 3rem; }
+  html h2 {
+    font-size: 1rem; }
+  html h3 {
+    font-weight: bold;
+    font-size: 1.5rem;
+    padding: 1.5rem; }
+
+/* Header & Footer
+================================================== */
+.i-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 7rem;
+  width: 7rem;
+  color: #a2d169;
+  margin: 0 2rem; }
+
+.App-header, .App-footer {
+  background-color: #222;
+  padding: 1.5rem;
+  color: white; }
+
+/* Navigation
+================================================== */
+.App-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; }
+  .App-title a {
+    color: white;
+    font-size: 2rem;
+    padding: 0 1.5rem; }
+  .App-title a:hover {
+    color: #a2d169; }
+
+.Nav-side {
+  display: flex;
+  flex-direction: column;
+  background-color: #f4f4f4;
+  width: 20vw; }
+  .Nav-side h3 {
+    text-align: left;
+    color: #4d934b;
+    font-weight: bold; }
+  .Nav-side .Side-icon {
+    text-align: left;
+    color: #a9a9a9;
+    font-size: 1rem; }
+  .Nav-side .Side-icon:hover {
+    color: #a2d169;
+    font-weight: bold; }
+  .Nav-side .i-sidebar {
+    padding: 1.5rem; }
+
+/* Table
+================================================== */
+.table {
+  margin-bottom: 1.5rem;
+  justify-content: center; }
+  .table table {
+    width: 70vw;
+    margin: 0 auto; }
+    .table table td, .table table th {
+      padding: 1.5rem 3.5rem; }
+    .table table th {
+      background-color: #4d934b;
+      color: white;
+      font-weight: bold; }
+    .table table tr {
+      background-color: rgba(244, 244, 244, 0.2); }
+      .table table tr:nth-child(even) {
+        background-color: #f4f4f4; }
+    .table table tr:hover {
+      background-color: rgba(162, 209, 105, 0.5); }
+  .table .i-remove {
+    color: #a9a9a9;
+    font-size: 1.5rem; }
+    .table .i-remove:hover {
+      color: #c71f16;
+      font-weight: bold; }
+
+/* Form
+================================================== */
+.form {
+  width: 100%; }
+  .form .i-add {
+    margin-top: .5rem;
+    color: #a9a9a9;
+    font-size: 2rem;
+    padding: 0 1.5rem; }
+  .form .i-add:hover {
+    color: #4d934b; }
+
+.input-field {
+  width: 20rem;
+  padding: 1rem;
+  margin: .5rem;
+  border: 0.5px solid #a9a9a9;
+  text-align: center; }
+
+.input-field:focus {
+  border: 2px solid #a2d169; }
