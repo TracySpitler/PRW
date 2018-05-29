@@ -9,7 +9,7 @@ import {
   TouchableOpacity
 } from 'react-native'
 
-export default class InputField extends Component {
+export default class InputToDo extends Component {
   constructor() {
     super()
     this.state = {
@@ -19,7 +19,7 @@ export default class InputField extends Component {
   }
 
   submit() {
-    if (this.state.todo !== null || this.state.todo !== "") {
+    if (this.state.todo !== null && this.state.todo !== "") {
       this.props.onNewTodo(this.state.todo)
       this.setState({todo: ''})
     }
@@ -34,8 +34,8 @@ export default class InputField extends Component {
           value={this.state.todo}
         />
         <TouchableOpacity onPress={this.submit}>
-          <FontAwesome style={styles.button}
-            name="check"
+          <FontAwesome style={styles.add}
+            name="plus-circle"
             size={26}>
           </FontAwesome>
         </TouchableOpacity>
@@ -45,7 +45,7 @@ export default class InputField extends Component {
   }
 }
 
-InputField.propTypes = {
+InputToDo.propTypes = {
   onNewTodo: PropTypes.func.isRequired,
 }
 
@@ -62,9 +62,10 @@ const styles = StyleSheet.create({
     borderWidth: 0.5,
     borderColor: '#d6d7da'
   },
-  button: {
+  add: {
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 10
+    padding: 10,
+    color: '#bdbdbd'
   }
 })

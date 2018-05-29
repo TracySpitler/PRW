@@ -1,24 +1,24 @@
 import React, { Component } from 'react'
 import Tri from '../assets/triangles.png'
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
-//import ListItem from '../components/ListItem'
-import InputField from '../components/InputField'
+import InputToDo from '../components/InputToDo'
 import {
   Text,
   View,
-  Button,
-  Image,
   StyleSheet,
   Dimensions,
   ListView,
   AsyncStorage,
   TouchableOpacity,
-  ImageBackground
+  TouchableHighlight,
+  ImageBackground,
+  Modal,
+  TextInput
 } from 'react-native'
 
 export default class YourDay extends Component {
   static navigationOptions = {
-    tabBarLabel: 'YourDay',
+    tabBarLabel: 'Your Day',
     tabBarIcon: ({ tintColor }) => {
       return (
         <FontAwesome
@@ -46,11 +46,12 @@ export default class YourDay extends Component {
     ]
     this.state = {
       doThings,
-      dataSource: this.ds.cloneWithRows(doThings)
+      dataSource: this.ds.cloneWithRows(doThings),
+      modalVisible: false
     }
     this.newTodo = this.newTodo.bind(this)
-
-    }
+    this.delTodo = this.delTodo.bind(this)
+  }
 
   componentDidMount() {
     AsyncStorage.getItem(
@@ -76,12 +77,12 @@ export default class YourDay extends Component {
     )
   }
 
-  delMe() {
-    //this.state.itemArray.splice(todo, 1);
+  delTodo(key) {
+    this.state.doThings.splice(key, 1)
     this.setState({
-      //doThings,
-      dataSource: this.ds.cloneWithRows(doThings.slice(0))
-    });
+      dataSource: this.ds.cloneWithRows(this.state.doThings)
+    })
+    this.saveTodo(this.state.doThings)
   }
 
   newTodo(todo) {
@@ -96,43 +97,102 @@ export default class YourDay extends Component {
     this.saveTodo(doThings)
   }
 
+  setModalVisible(visible) {
+    this.setState({modalVisible: visible});
+  }
+
   render() {
     const {dataSource} = this.state
     return (
       <View style={styles.container}>
+      <Modal
+        animationType="slide"
+        transparent={false}
+        visible={this.state.modalVisible}>
+        <View style={styles.container}>
+          <View>
+          <View style={styles.container}>
+
+            <TextInput style={styles.input}
+              placeholder="Edit item..."
+              onChangeText={(todo) => this.setState({todo})}
+              value={this.state.todo}
+            />
+
+            <Text>
+            <TouchableOpacity onPress={ () => {this.setModalVisible(!this.state.modalVisible)}}>
+              <FontAwesome
+                style={styles.popI}
+                name="minus-circle"
+                size={26}>
+              </FontAwesome>
+            </TouchableOpacity>
+
+            <TouchableOpacity onPress={this.submit}>
+              <FontAwesome style={styles.popI}
+                name="plus-circle"
+                size={26}>
+              </FontAwesome>
+            </TouchableOpacity>
+            </Text>
+
+            <Text>Could you help lead me in the right direction?</Text>
+            <Text>I really want to solve this.</Text>
+            <Text style={styles.note}>The minus sign will close this modal.</Text>
+
+          </View>
+
+            <TouchableHighlight
+              onPress={() => {
+                this.setModalVisible(!this.state.modalVisible);
+              }}>
+              <Text>Hide Modal</Text>
+            </TouchableHighlight>
+          </View>
+        </View>
+      </Modal>
+
         <Text>Your Day</Text>
 
         <ListView
+          key={this._data}
           dataSource = {dataSource}
           renderHeader = {() => (
             <View>
             <ImageBackground source={Tri} style={styles.header}>
               <Text style={styles.h3}>Sieze Your Day</Text>
-              <Text>Go on...make it productive.</Text>
+              <Text style={styles.p}>Go on...make it productive.</Text>
             </ImageBackground>
-            <InputField onNewTodo={this.newTodo}/>
+            <InputToDo onNewTodo={this.newTodo}/>
             </View>
           )}
-          renderRow = {(todo) => (
+
+          renderRow = {(rowData, sectionID, rowID) => (
             <View style={styles.itemBox}>
-            <Text>{todo}</Text>
-            <TouchableOpacity onPress={this.props.delMe}>
+            <Text>{rowData}</Text>
+
+            <Text style={styles.icons}>
+            <TouchableOpacity onPress={ () => {this.setModalVisible(!this.state.modalVisible)}}>
               <FontAwesome
-                name="trash"
+                style={styles.edit}
+                name="pencil"
+                underlayColor={'#e31a1c'}
                 size={26}>
               </FontAwesome>
             </TouchableOpacity>
+
+            <TouchableOpacity onPress={ () => this.delTodo(rowID) }>
+              <FontAwesome
+                style={styles.remove}
+                name="minus-circle"
+                size={26}>
+              </FontAwesome>
+            </TouchableOpacity>
+            </Text>
             </View>
-
-            // <TouchableOpacity onPress={this.props.delMe}>
-            //   <FontAwesome
-            //     name="delete"
-            //     size={26}>
-            //   </FontAwesome>
-            // </TouchableOpacity>
           )}>
-        </ListView>
 
+        </ListView>
       </View>
     )
   }
@@ -155,7 +215,11 @@ const styles = StyleSheet.create({
   h3: {
     fontSize: 30,
     padding: 5,
-    fontWeight: '700'
+    fontWeight: '700',
+    color: 'white'
+  },
+  p: {
+    color: 'white'
   },
   itemBox: {
     flexDirection: 'row',
@@ -164,5 +228,28 @@ const styles = StyleSheet.create({
     padding: 30,
     borderWidth: 0.5,
     borderColor: '#d6d7da'
+  },
+  edit: {
+    color: '#bdbdbd',
+    marginRight: 20
+  },
+  remove: {
+    color: '#e31a1c'
+  },
+  input: {
+    padding: 10,
+    borderWidth: 0.5,
+    borderColor: '#d6d7da',
+    margin: 20,
+    width: 250,
+    justifyContent: 'center'
+  },
+  popI: {
+    color: '#bdbdbd',
+    margin: 10
+  },
+  note: {
+    marginTop: 30,
+    color: '#e31a1c'
   }
 })

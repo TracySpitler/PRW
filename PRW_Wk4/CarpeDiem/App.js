@@ -1,7 +1,7 @@
 import { createBottomTabNavigator } from 'react-navigation'
 
 import Home from './screens/Home'
-import LifeList from './screens/LifeList'
+import Explore from './screens/Explore'
 import YourDay from './screens/YourDay'
 
 const TabNav = createBottomTabNavigator(
@@ -14,9 +14,9 @@ const TabNav = createBottomTabNavigator(
       path: '/day',
       screen: YourDay,
     },
-    LifeList: {
+    Explore: {
       path: '/explore',
-      screen: LifeList,
+      screen: Explore,
     }
   },
   {
